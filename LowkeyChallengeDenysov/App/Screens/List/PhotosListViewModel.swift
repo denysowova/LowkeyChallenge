@@ -13,22 +13,38 @@ final class PhotosListViewModel {
     
     private let getPhotosUseCase: GetPhotosUseCase
     
+    private var nextPage = 0
+    
+    private(set) var state: PhotosListScreenState = .loadingNextPage
     private(set) var photos: [PhotoListItem] = []
     
     init(getPhotosUseCase: GetPhotosUseCase) {
         self.getPhotosUseCase = getPhotosUseCase
     }
     
-    func performTasks() {
+    func fetchPhotos() {
         Task {
+            state = .loadingNextPage
+            
             do {
-                photos = try await getPhotosUseCase.invoke(page: 0, perPage: 5)
+                print("xxx fetching page \(nextPage)")
+                let fetchedPhotos = try await getPhotosUseCase.invoke(page: nextPage, perPage: 20)
                     .map {
-                        PhotoListItem(id: $0.id, url: $0.url, author: $0.author)
+                        PhotoListItem(
+                            id: $0.id,
+                            thumbnailURL: $0.thumbnailURL,
+                            url: $0.url,
+                            author: $0.author
+                        )
                     }
+                
+                photos.append(contentsOf: fetchedPhotos)
+                nextPage += 1
             } catch {
                 print("Error fetching photos: \(error.localizedDescription)")
             }
+            
+            state = .idle
         }
     }
 }
