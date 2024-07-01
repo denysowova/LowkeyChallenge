@@ -41,22 +41,26 @@ struct PhotosListScreen: View {
     }
     
     private func photoRowView(for item: PhotoListItem) -> some View {
-        HStack {
+        ZStack {
             AsyncImage(url: item.url) { image in
-                image.resizable()
+                image.resizable().scaledToFill()
             } placeholder: {
                 ProgressView()
             }
-            .frame(width: 100, height: 50)
+            .frame(height: 150)
             
-            Spacer()
-            
-            Text(String(item.id))
+            VStack {
+                Spacer()
+                
+                Text(String(item.id))
+            }
         }
         .background {
             RoundedRectangle(cornerRadius: 12)
                 .foregroundStyle(Color.clear)
         }
+        .padding(.horizontal, 8)
+        .clipped()
         .listRowSeparator(.hidden)
     }
 }

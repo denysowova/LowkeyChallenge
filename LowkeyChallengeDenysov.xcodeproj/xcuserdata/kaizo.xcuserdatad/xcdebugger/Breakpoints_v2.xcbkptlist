@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "6946E6DF-58F5-4E25-9E8D-91EB8404FAAE"
+            uuid = "8A9C208F-77BD-4B0E-AF49-4DB1B4D2A03E"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LowkeyChallengeDenysov/App/Screens/List/PhotosListViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "performTasks()"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "fetchPhotos()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
