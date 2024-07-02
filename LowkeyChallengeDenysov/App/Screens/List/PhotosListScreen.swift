@@ -30,28 +30,27 @@ struct PhotosListScreen: View {
     private func listView() -> some View {
         ForEach(viewModel.photos) { item in
             AsyncImage(url: item.url) { image in
-                ZStack {
-                    image.resizable().scaledToFill()
-                        .frame(height: 150)
+                image.resizable().scaledToFill()
+                    .frame(height: 150)
+                    .overlay {
+                        VStack {
+                            Spacer()
+                            
+                            Text("By: \(item.author)")
+                                .foregroundStyle(Color.white)
+                                .padding(.bottom, 10)
+                        }
                         .frame(maxWidth: .infinity)
-                    
-                    VStack {
-                        Spacer()
-                        
-                        Text("By: \(item.author)")
-                            .foregroundStyle(Color.white)
-                            .padding(.bottom, 10)
+                        .background {
+                            LinearGradient(
+                                gradient: Gradient(colors: [.clear, .black]),
+                                startPoint: .center,
+                                endPoint: .bottom
+                            )
+                        }
                     }
-                    .frame(maxWidth: .infinity)
-                    .background {
-                        LinearGradient(
-                            gradient: Gradient(colors: [.clear, .black]),
-                            startPoint: .center,
-                            endPoint: .bottom
-                        )
-                    }
-                }
             } placeholder: {
+                // instead of progress show a tile/rectangle with rounded corners?
                 HStack {
                     Spacer()
                     
@@ -60,7 +59,7 @@ struct PhotosListScreen: View {
                     Spacer()
                 }
             }
-            .frame(height: 150) // frame is not needed because the ZStack is framed by the largest subview?
+            .frame(height: 150)
             .frame(maxWidth: .infinity)
             .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
             .shadow(color: .black.opacity(0.5), radius: 6, x: 0, y: 3)
@@ -71,18 +70,21 @@ struct PhotosListScreen: View {
         }
     }
     
-    // add list row insets, center progress view
     @ViewBuilder
     private func footerView() -> some View {
-        switch viewModel.state {
-        case .idle:
-            ProgressView()
-                .progressViewStyle(.circular)
-                .onAppear {
-                    viewModel.fetchPhotos()
-                }
-        case .loadingNextPage:
-            ProgressView()
-                .progressViewStyle(.circular)
-        }    }
+        Group {
+            switch viewModel.state {
+            case .idle:
+                ProgressView()
+                    .progressViewStyle(.circular)
+                    .onAppear {
+                        viewModel.fetchPhotos()
+                    }
+            case .loadingNextPage:
+                ProgressView()
+                    .progressViewStyle(.circular)
+            }
+        }
+        .listRowSeparator(.hidden)
+    }
 }
