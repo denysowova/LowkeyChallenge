@@ -54,13 +54,12 @@ struct PhotosListScreen: View {
                 
                 Text(String(item.id))
             }
+//            .background {
+//                LinearGradient(gradient: Gradient(colors: [.clear, .black]), startPoint: .top, endPoint: .bottom)
+//            }
         }
-        .background {
-            RoundedRectangle(cornerRadius: 12)
-                .foregroundStyle(Color.clear)
-        }
-        .padding(.horizontal, 8)
-        .clipped()
+        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+        .padding(.horizontal, 6) // doesn't do anythinhg. width is calculated based on height and scaled to fill?
         .listRowSeparator(.hidden)
     }
 }
