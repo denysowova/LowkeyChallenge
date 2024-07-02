@@ -29,36 +29,39 @@ struct PhotosListScreen: View {
     
     private func listView() -> some View {
         ForEach(viewModel.photos) { item in
-            ZStack {
-                AsyncImage(url: item.url) { image in
+            AsyncImage(url: item.url) { image in
+                ZStack {
                     image.resizable().scaledToFill()
-                } placeholder: {
-                    HStack {
+                        .frame(height: 150)
+                        .frame(maxWidth: .infinity)
+                    
+                    VStack {
                         Spacer()
                         
-                        ProgressView()
-                        
-                        Spacer()
+                        Text("By: \(item.author)")
+                            .foregroundStyle(Color.white)
+                            .padding(.bottom, 10)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .background {
+                        LinearGradient(
+                            gradient: Gradient(colors: [.clear, .black]),
+                            startPoint: .center,
+                            endPoint: .bottom
+                        )
                     }
                 }
-                .frame(height: 150)
-                .frame(maxWidth: .infinity)
-                .overlay {
-                    LinearGradient(
-                        gradient: Gradient(colors: [.clear, .black]),
-                        startPoint: .center,
-                        endPoint: .bottom
-                    )
-                }
-                
-                VStack {
+            } placeholder: {
+                HStack {
                     Spacer()
                     
-                    Text(String(item.id))
-                        .foregroundStyle(Color.white)
-                        .padding(.bottom, 10)
+                    ProgressView()
+                    
+                    Spacer()
                 }
             }
+            .frame(height: 150) // frame is not needed because the ZStack is framed by the largest subview?
+            .frame(maxWidth: .infinity)
             .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
             .shadow(color: .black.opacity(0.5), radius: 6, x: 0, y: 3)
             .padding(.horizontal, 12)
