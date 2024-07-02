@@ -43,16 +43,17 @@ struct PhotosListScreen: View {
                 }
                 .frame(height: 150)
                 .frame(maxWidth: .infinity)
+                .overlay {
+                    LinearGradient(gradient: Gradient(colors: [.clear, .black]), startPoint: .center, endPoint: .bottom)
+                }
                 
                 VStack {
                     Spacer()
                     
                     Text(String(item.id))
-                        .foregroundStyle(Color.red)
+                        .foregroundStyle(Color.white)
+                        .padding(.bottom, 10)
                 }
-    //            .background {
-    //                LinearGradient(gradient: Gradient(colors: [.clear, .black]), startPoint: .top, endPoint: .bottom)
-    //            }
             }
             .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
             .shadow(color: Color.black.opacity(0.5), radius: 6, x: 0, y: 3)
