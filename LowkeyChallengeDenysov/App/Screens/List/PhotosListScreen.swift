@@ -18,21 +18,8 @@ struct PhotosListScreen: View {
     
     var body: some View {
         List {
-            ForEach(viewModel.photos) { item in
-                photoRowView(for: item)
-            }
-            
-            switch viewModel.state {
-            case .idle:
-                ProgressView()
-                    .progressViewStyle(.circular)
-                    .onAppear {
-                        viewModel.fetchPhotos()
-                    }
-            case .loadingNextPage:
-                ProgressView()
-                    .progressViewStyle(.circular)
-            }
+            listView()
+            footerView()
         }
         .listStyle(.plain)
         .task {
@@ -40,26 +27,53 @@ struct PhotosListScreen: View {
         }
     }
     
-    private func photoRowView(for item: PhotoListItem) -> some View {
-        ZStack {
-            AsyncImage(url: item.url) { image in
-                image.resizable().scaledToFill()
-            } placeholder: {
-                ProgressView()
-            }
-            .frame(height: 150)
-            
-            VStack {
-                Spacer()
+    private func listView() -> some View {
+        ForEach(viewModel.photos) { item in
+            ZStack {
+                AsyncImage(url: item.url) { image in
+                    image.resizable().scaledToFill()
+                } placeholder: {
+                    HStack {
+                        Spacer()
+                        
+                        ProgressView()
+                        
+                        Spacer()
+                    }
+                }
+                .frame(height: 150)
+                .frame(maxWidth: .infinity)
                 
-                Text(String(item.id))
+                VStack {
+                    Spacer()
+                    
+                    Text(String(item.id))
+                        .foregroundStyle(Color.red)
+                }
+    //            .background {
+    //                LinearGradient(gradient: Gradient(colors: [.clear, .black]), startPoint: .top, endPoint: .bottom)
+    //            }
             }
-//            .background {
-//                LinearGradient(gradient: Gradient(colors: [.clear, .black]), startPoint: .top, endPoint: .bottom)
-//            }
+            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+            .shadow(color: Color.black.opacity(0.5), radius: 6, x: 0, y: 3)
+            .padding(.horizontal, 12)
+            .padding(.vertical, 10)
+            .listRowSeparator(.hidden)
+            .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
         }
-        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-        .padding(.horizontal, 6) // doesn't do anythinhg. width is calculated based on height and scaled to fill?
-        .listRowSeparator(.hidden)
     }
+    
+    @ViewBuilder
+    private func footerView() -> some View {
+        switch viewModel.state {
+        case .idle:
+            ProgressView()
+                .progressViewStyle(.circular)
+                .onAppear {
+                    viewModel.fetchPhotos()
+                }
+        case .loadingNextPage:
+            ProgressView()
+                .progressViewStyle(.circular)
+        }    }
 }
