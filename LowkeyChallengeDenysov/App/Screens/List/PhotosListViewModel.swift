@@ -28,6 +28,7 @@ final class PhotosListViewModel {
             
             do {
                 print("xxx fetching page \(nextPage)")
+                // if next page is nil, do not show footer
                 let fetchedPhotos = try await getPhotosUseCase.invoke(page: nextPage, perPage: 20)
                     .map {
                         PhotoListItem(

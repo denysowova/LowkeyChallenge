@@ -44,7 +44,11 @@ struct PhotosListScreen: View {
                 .frame(height: 150)
                 .frame(maxWidth: .infinity)
                 .overlay {
-                    LinearGradient(gradient: Gradient(colors: [.clear, .black]), startPoint: .center, endPoint: .bottom)
+                    LinearGradient(
+                        gradient: Gradient(colors: [.clear, .black]),
+                        startPoint: .center,
+                        endPoint: .bottom
+                    )
                 }
                 
                 VStack {
@@ -56,7 +60,7 @@ struct PhotosListScreen: View {
                 }
             }
             .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-            .shadow(color: Color.black.opacity(0.5), radius: 6, x: 0, y: 3)
+            .shadow(color: .black.opacity(0.5), radius: 6, x: 0, y: 3)
             .padding(.horizontal, 12)
             .padding(.vertical, 10)
             .listRowSeparator(.hidden)
@@ -64,6 +68,7 @@ struct PhotosListScreen: View {
         }
     }
     
+    // add list row insets, center progress view
     @ViewBuilder
     private func footerView() -> some View {
         switch viewModel.state {
