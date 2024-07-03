@@ -28,6 +28,7 @@
 		4689C9E42C31B2E400A6CC25 /* PhotosListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4689C9E32C31B2E400A6CC25 /* PhotosListViewModel.swift */; };
 		4689C9E62C31B33F00A6CC25 /* PhotoListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4689C9E52C31B33F00A6CC25 /* PhotoListItem.swift */; };
 		4689C9E92C31B3FA00A6CC25 /* ViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4689C9E82C31B3FA00A6CC25 /* ViewModelFactory.swift */; };
+		C31C1C912C355E2F00B014E6 /* CustomAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31C1C902C355E2F00B014E6 /* CustomAsyncImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		4689C9E32C31B2E400A6CC25 /* PhotosListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosListViewModel.swift; sourceTree = "<group>"; };
 		4689C9E52C31B33F00A6CC25 /* PhotoListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListItem.swift; sourceTree = "<group>"; };
 		4689C9E82C31B3FA00A6CC25 /* ViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelFactory.swift; sourceTree = "<group>"; };
+		C31C1C902C355E2F00B014E6 /* CustomAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAsyncImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 				4689C9CC2C31A61500A6CC25 /* Domain */,
 				4689C9BE2C31A0A000A6CC25 /* Data */,
 				4689C9B62C319FDC00A6CC25 /* Networking */,
+				C31C1C8F2C355E0900B014E6 /* Components */,
 				4689C9AC2C319CA400A6CC25 /* Assets.xcassets */,
 				4689C9AE2C319CA400A6CC25 /* Preview Content */,
 			);
@@ -238,6 +241,14 @@
 			path = List;
 			sourceTree = "<group>";
 		};
+		C31C1C8F2C355E0900B014E6 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				C31C1C902C355E2F00B014E6 /* CustomAsyncImage.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -309,6 +320,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4689C9DE2C31B0F300A6CC25 /* UseCaseFactory.swift in Sources */,
+				C31C1C912C355E2F00B014E6 /* CustomAsyncImage.swift in Sources */,
 				4689C9BB2C31A03D00A6CC25 /* HTTPClientErrorResponse.swift in Sources */,
 				4689C9E42C31B2E400A6CC25 /* PhotosListViewModel.swift in Sources */,
 				4689C9E22C31B21B00A6CC25 /* PhotosListScreen.swift in Sources */,

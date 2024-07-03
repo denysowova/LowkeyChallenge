@@ -29,34 +29,38 @@ struct PhotosListScreen: View {
     
     private func listView() -> some View {
         ForEach(viewModel.photos) { item in
-            AsyncImage(url: item.url) { image in
-                image.resizable().scaledToFill()
-                    .frame(height: 150)
-                    .overlay {
-                        VStack {
-                            Spacer()
-                            
-                            Text("By: \(item.author)")
-                                .foregroundStyle(Color.white)
-                                .padding(.bottom, 10)
-                        }
-                        .frame(maxWidth: .infinity)
-                        .background {
-                            LinearGradient(
-                                gradient: Gradient(colors: [.clear, .black]),
-                                startPoint: .center,
-                                endPoint: .bottom
-                            )
-                        }
+            CustomAsyncImage(url: item.url) { phase in
+                switch phase {
+                case .fetching:
+                    HStack {
+                        Spacer()
+                        
+                        ProgressView()
+                        
+                        Spacer()
                     }
-            } placeholder: {
-                // instead of progress show a tile/rectangle with rounded corners?
-                HStack {
-                    Spacer()
-                    
-                    ProgressView()
-                    
-                    Spacer()
+                case .error(let error):
+                    Text("Error: \(error.localizedDescription)")
+                case .fetched(let image):
+                    image.resizable().scaledToFill()
+                        .frame(height: 150)
+                        .overlay {
+                            VStack {
+                                Spacer()
+                                
+                                Text("By: \(item.author)")
+                                    .foregroundStyle(Color.white)
+                                    .padding(.bottom, 10)
+                            }
+                            .frame(maxWidth: .infinity)
+                            .background {
+                                LinearGradient(
+                                    gradient: Gradient(colors: [.clear, .black]),
+                                    startPoint: .center,
+                                    endPoint: .bottom
+                                )
+                            }
+                        }
                 }
             }
             .frame(height: 150)
