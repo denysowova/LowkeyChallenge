@@ -35,14 +35,8 @@ struct CustomAsyncImage<Content>: View where Content: View {
     
     private func fetchImage() async {
         do {
-            let (data, _) = try await URLSession.shared.data(from: url)
-            
-            // use the uikit thing for preparing the image?
-            if let image = UIImage(data: data) {
-                phase = .fetched(Image(uiImage: image))
-            } else {
-                phase = .error(Error.imageDecoding)
-            }
+            let image = try await ImageLoaderImpl.shared.image(at: url)
+            phase = .fetched(Image(uiImage: image))
         } catch {
             phase = .error(Error.request(error))
         }

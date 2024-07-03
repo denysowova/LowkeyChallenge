@@ -22,7 +22,7 @@ final class HTTPClient<ErrorResponse: HTTPClientErrorResponse> {
         case delete = "DELETE"
     }
     
-    private let session = URLSession(configuration: .default)
+    private let session: URLSession
     private let baseURL: URL
     private let defaultHeaders: [String: String]
     private let encoder: JSONEncoder
@@ -30,12 +30,14 @@ final class HTTPClient<ErrorResponse: HTTPClientErrorResponse> {
     private let interceptors: [HTTPClientRequestInterceptor]
     
     init(
+        configuration: URLSessionConfiguration = .default,
         baseURL: URL,
         headers: [String: String] = [:],
         encoder: JSONEncoder = JSONEncoder(),
         decoder: JSONDecoder = JSONDecoder(),
         interceptors: [HTTPClientRequestInterceptor] = []
     ) {
+        self.session = URLSession(configuration: configuration)
         self.baseURL = baseURL
         self.defaultHeaders = headers
         self.encoder = encoder
