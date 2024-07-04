@@ -22,11 +22,15 @@ struct PhotosListScreen: View {
             footerView()
         }
         .listStyle(.plain)
+        .refreshable {
+            viewModel.refresh()
+        }
         .task {
             viewModel.fetchPhotos()
         }
     }
     
+    #warning("Break down, pretty loading tile, ignore error")
     private func listView() -> some View {
         ForEach(viewModel.photos) { item in
             CustomAsyncImage(url: item.url) { phase in
