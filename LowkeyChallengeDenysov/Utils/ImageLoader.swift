@@ -34,26 +34,6 @@ final class ImageLoaderImpl: ImageLoader {
     }()
     
     func image(at url: URL) async throws -> UIImage {
-//        let request = URLRequest(url: url)
-//
-//        if let data = URLCache.shared.cachedResponse(for: request)?.data,
-//           let image = UIImage(data: data) {
-//            return image
-//        } else {
-//            return try await fetch(at: url)
-//        }
-        
-        return try await fetch(at: url)
-    }
-    
-    func isImageCached(for url: URL) -> Bool {
-        let request = URLRequest(url: url)
-        return session.configuration.urlCache?.cachedResponse(for: request) != nil
-    }
-    
-    private func fetch(at url: URL) async throws -> UIImage {
-//        print("fetching at: \(url.absoluteString)")
-        let request = URLRequest(url: url)
         let response: (data: Data, raw: URLResponse)
         
         do {
@@ -62,14 +42,16 @@ final class ImageLoaderImpl: ImageLoader {
             throw Error.request(error)
         }
         
-//        let cachedData = CachedURLResponse(response: response.raw, data: response.data)
-//        URLCache.shared.storeCachedResponse(cachedData, for: request)
-        
-        // use the uikit thing for preparing the image?
+        /// Optimization opportunity: use UIImage::byPreparingForDisplay offloading image decoding from view
         if let image = UIImage(data: response.data) {
             return image
         } else {
             throw Error.imageDecoding
         }
+    }
+    
+    func isImageCached(for url: URL) -> Bool {
+        let request = URLRequest(url: url)
+        return session.configuration.urlCache?.cachedResponse(for: request) != nil
     }
 }
