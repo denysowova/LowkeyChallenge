@@ -80,7 +80,7 @@ final class PhotosListViewModel {
         }
     }
     
-    /// Could as well clear cache, but URLCache::removeAllCachedResponses is async under the hood
+    /// Could clear the cache as well, but URLCache::removeAllCachedResponses is async under the hood
     /// and there is no indication of when all cache is removed. Results in some cached results being returned still
     /// unless artificially waiting for some time
     func refresh() {

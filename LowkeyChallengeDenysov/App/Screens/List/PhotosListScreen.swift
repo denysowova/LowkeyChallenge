@@ -14,11 +14,13 @@ enum PhotosListScreenState {
 
 struct PhotosListScreen: View {
     
+    private let rowHeight = 150.0
+    
     @State private var viewModel = ViewModelFactory.photosList()
     
     var body: some View {
         List {
-            listView()
+            listContent()
             footerView()
         }
         .listStyle(.plain)
@@ -30,44 +32,28 @@ struct PhotosListScreen: View {
         }
     }
     
-    #warning("Break down, pretty loading tile, ignore error")
-    private func listView() -> some View {
+    private var progressView: some View {
+        HStack {
+            Spacer()
+            ProgressView()
+            Spacer()
+        }
+    }
+    
+    private func listContent() -> some View {
         ForEach(viewModel.photos) { item in
             CustomAsyncImage(url: item.url) { phase in
                 switch phase {
-                case .fetching:
-                    HStack {
-                        Spacer()
-                        
-                        ProgressView()
-                        
-                        Spacer()
-                    }
-                case .error(let error):
-                    Text("Error: \(error.localizedDescription)")
-                case .fetched(let image):
-                    image.resizable().scaledToFill()
-                        .frame(height: 150)
+                case .fetching, .error:
+                    Color.gray
                         .overlay {
-                            VStack {
-                                Spacer()
-                                
-                                Text("By: \(item.author)")
-                                    .foregroundStyle(Color.white)
-                                    .padding(.bottom, 10)
-                            }
-                            .frame(maxWidth: .infinity)
-                            .background {
-                                LinearGradient(
-                                    gradient: Gradient(colors: [.clear, .black]),
-                                    startPoint: .center,
-                                    endPoint: .bottom
-                                )
-                            }
+                            progressView
                         }
+                case .fetched(let image):
+                    rowView(for: item, image: image)
                 }
             }
-            .frame(height: 150)
+            .frame(height: rowHeight)
             .frame(maxWidth: .infinity)
             .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
             .shadow(color: .black.opacity(0.5), radius: 6, x: 0, y: 3)
@@ -78,22 +64,38 @@ struct PhotosListScreen: View {
         }
     }
     
-    private func footerView() -> some View {
-        HStack {
-            Spacer()
-            
-            ProgressView().progressViewStyle(.circular)
-            
-            Spacer()
-        }
-        .listRowSeparator(.hidden)
-        .onAppear {
-            switch viewModel.state {
-            case .idle:
-                viewModel.fetchPhotos()
-            case .loadingNextPage:
-                break
+    private func rowView(for item: PhotoListItem, image: Image) -> some View {
+        image.resizable().scaledToFill()
+            .frame(height: rowHeight)
+            .overlay {
+                VStack {
+                    Spacer()
+                    
+                    Text("By: \(item.author)")
+                        .foregroundStyle(Color.white)
+                        .padding(.bottom, 10)
+                }
+                .frame(maxWidth: .infinity)
+                .background {
+                    LinearGradient(
+                        gradient: Gradient(colors: [.clear, .black]),
+                        startPoint: .center,
+                        endPoint: .bottom
+                    )
+                }
             }
-        }
+    }
+    
+    private func footerView() -> some View {
+        progressView
+            .listRowSeparator(.hidden)
+            .onAppear {
+                switch viewModel.state {
+                case .idle:
+                    viewModel.fetchPhotos()
+                case .loadingNextPage:
+                    break
+                }
+            }
     }
 }
