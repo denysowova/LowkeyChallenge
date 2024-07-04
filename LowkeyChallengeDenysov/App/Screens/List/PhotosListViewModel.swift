@@ -12,14 +12,16 @@ import Observation
 final class PhotosListViewModel {
     
     private let getPhotosUseCase: GetPhotosUseCase
+    private let getIsOnlineUseCase: GetIsOnlineUseCase
     
     private var nextPage = 0
     
     private(set) var state: PhotosListScreenState = .loadingNextPage
     private(set) var photos: [PhotoListItem] = []
     
-    init(getPhotosUseCase: GetPhotosUseCase) {
+    init(getPhotosUseCase: GetPhotosUseCase, getIsOnlineUseCase: GetIsOnlineUseCase) {
         self.getPhotosUseCase = getPhotosUseCase
+        self.getIsOnlineUseCase = getIsOnlineUseCase
     }
     
     #warning("use thumbnail url here and in the list!!!")
@@ -35,7 +37,8 @@ final class PhotosListViewModel {
     func fetchPhotos() {
         Task {
             state = .loadingNextPage
-            let isOnline = NetworkReachabilityMonitorImpl.shared.isOnline()
+            
+            let isOnline = getIsOnlineUseCase.invoke()
             
             do {
                 print("xxx fetching page \(nextPage)")

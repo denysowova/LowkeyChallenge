@@ -11,7 +11,7 @@ import SwiftUI
 struct LowkeyChallengeDenysovApp: App {
     
     init() {
-        _ = NetworkReachabilityMonitorImpl.shared
+        _ = UtilsFactory.networkReachabilityMonitor
     }
     
     var body: some Scene {

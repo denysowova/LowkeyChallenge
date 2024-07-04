@@ -10,6 +10,9 @@ import Foundation
 enum ViewModelFactory {
     
     static func photosList() -> PhotosListViewModel {
-        PhotosListViewModel(getPhotosUseCase: UseCaseFactory.getPhotos())
+        PhotosListViewModel(
+            getPhotosUseCase: UseCaseFactory.getPhotos(),
+            getIsOnlineUseCase: UseCaseFactory.getIsOnline()
+        )
     }
 }

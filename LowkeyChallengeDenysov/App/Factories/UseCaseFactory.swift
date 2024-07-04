@@ -12,4 +12,8 @@ enum UseCaseFactory {
     static func getPhotos() -> GetPhotosUseCase {
         GetPhotosUseCaseImpl(repository: RepositoryFactory.photos)
     }
+    
+    static func getIsOnline() -> GetIsOnlineUseCase {
+        GetIsOnlineUseCaseImpl(networkReachabilityMonitor: UtilsFactory.networkReachabilityMonitor)
+    }
 }

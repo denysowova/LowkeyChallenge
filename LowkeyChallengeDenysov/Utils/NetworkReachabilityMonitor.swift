@@ -17,8 +17,6 @@ final class NetworkReachabilityMonitorImpl: NetworkReachabilityMonitor {
     private let monitor = NWPathMonitor()
     private let queue = DispatchQueue(label: "com.lowkey.networkReachabilityMonitor")
     
-    static let shared =  NetworkReachabilityMonitorImpl()
-    
     init() {
         monitor.start(queue: queue)
     }
