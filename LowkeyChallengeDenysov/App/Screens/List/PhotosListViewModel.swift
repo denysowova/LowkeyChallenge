@@ -12,16 +12,22 @@ import Observation
 final class PhotosListViewModel {
     
     private let getPhotosUseCase: GetPhotosUseCase
-    private let getIsOnlineUseCase: GetIsOnlineUseCase
+    private let isOnlineUseCase: IsOnlineUseCase
+    private let isImageCachedUseCase: IsImageCachedUseCase
     
     private var nextPage = 0
     
     private(set) var state: PhotosListScreenState = .loadingNextPage
     private(set) var photos: [PhotoListItem] = []
     
-    init(getPhotosUseCase: GetPhotosUseCase, getIsOnlineUseCase: GetIsOnlineUseCase) {
+    init(
+        getPhotosUseCase: GetPhotosUseCase,
+        isOnlineUseCase: IsOnlineUseCase,
+        isImageCachedUseCase: IsImageCachedUseCase
+    ) {
         self.getPhotosUseCase = getPhotosUseCase
-        self.getIsOnlineUseCase = getIsOnlineUseCase
+        self.isOnlineUseCase = isOnlineUseCase
+        self.isImageCachedUseCase = isImageCachedUseCase
     }
     
     #warning("use thumbnail url here and in the list!!!")
@@ -38,7 +44,7 @@ final class PhotosListViewModel {
         Task {
             state = .loadingNextPage
             
-            let isOnline = getIsOnlineUseCase.invoke()
+            let isOnline = isOnlineUseCase.invoke()
             
             do {
                 print("xxx fetching page \(nextPage)")
@@ -51,7 +57,7 @@ final class PhotosListViewModel {
                             return false
                         }
                         
-                        return isOnline || ImageLoaderImpl.shared.isImageCached(for: photo.url)
+                        return isOnline || isImageCachedUseCase.invoke(for: photo.url)
                     }
                     .map {
                         PhotoListItem(

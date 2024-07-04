@@ -19,8 +19,6 @@ final class ImageLoaderImpl: ImageLoader {
         case imageDecoding
     }
     
-    static let shared = ImageLoaderImpl()
-    
     private let session: URLSession = {
         let memoryCapacity = 500 * 1024 * 1024  /// 500 MB
         let diskCapacity = 1 * 1024 * 1024 * 1024  /// 1 GB

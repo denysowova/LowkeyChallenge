@@ -21,6 +21,7 @@ struct CustomAsyncImage<Content>: View where Content: View {
         case imageDecoding
     }
     
+    private let imageLoader = UtilsFactory.imageLoader
     @State private var phase: CustomAsyncImagePhase = .fetching
     
     let url: URL
@@ -35,7 +36,7 @@ struct CustomAsyncImage<Content>: View where Content: View {
     
     private func fetchImage() async {
         do {
-            let image = try await ImageLoaderImpl.shared.image(at: url)
+            let image = try await imageLoader.image(at: url)
             phase = .fetched(Image(uiImage: image))
         } catch {
             phase = .error(Error.request(error))

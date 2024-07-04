@@ -8,5 +8,6 @@
 import Foundation
 
 enum UtilsFactory {
+    static let imageLoader: ImageLoader = ImageLoaderImpl()
     static let networkReachabilityMonitor: NetworkReachabilityMonitor = NetworkReachabilityMonitorImpl()
 }

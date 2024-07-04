@@ -13,7 +13,11 @@ enum UseCaseFactory {
         GetPhotosUseCaseImpl(repository: RepositoryFactory.photos)
     }
     
-    static func getIsOnline() -> GetIsOnlineUseCase {
-        GetIsOnlineUseCaseImpl(networkReachabilityMonitor: UtilsFactory.networkReachabilityMonitor)
+    static func isImageCached() -> IsImageCachedUseCase {
+        IsImageCachedUseCaseImpl(imageLoader: UtilsFactory.imageLoader)
+    }
+    
+    static func getIsOnline() -> IsOnlineUseCase {
+        IsOnlineUseCaseImpl(networkReachabilityMonitor: UtilsFactory.networkReachabilityMonitor)
     }
 }

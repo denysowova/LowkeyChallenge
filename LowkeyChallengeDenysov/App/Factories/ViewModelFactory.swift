@@ -12,7 +12,8 @@ enum ViewModelFactory {
     static func photosList() -> PhotosListViewModel {
         PhotosListViewModel(
             getPhotosUseCase: UseCaseFactory.getPhotos(),
-            getIsOnlineUseCase: UseCaseFactory.getIsOnline()
+            isOnlineUseCase: UseCaseFactory.getIsOnline(),
+            isImageCachedUseCase: UseCaseFactory.isImageCached()
         )
     }
 }
