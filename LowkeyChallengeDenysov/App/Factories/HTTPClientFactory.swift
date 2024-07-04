@@ -9,6 +9,7 @@ import Foundation
 
 enum HTTPClientFactory {
     
+    // Dynamic cache policy?
     static let pexels: HTTPClient<PexelsErrorResponse> = {
         let memoryCapacity = 50 * 1024 * 1024  /// 50 MB
         let diskCapacity = 100 * 1024 * 1024  /// 100 MB
@@ -17,7 +18,7 @@ enum HTTPClientFactory {
         
         let configuration = URLSessionConfiguration.default
         configuration.urlCache = cache
-        configuration.requestCachePolicy = .returnCacheDataElseLoad
+        configuration.requestCachePolicy = .returnCacheDataElseLoad  // this always returns cache and doesn't fetch new when there is network
         
         return HTTPClient<PexelsErrorResponse>(
             configuration: configuration,

@@ -52,7 +52,7 @@ final class ImageLoaderImpl: ImageLoader {
     }
     
     private func fetch(at url: URL) async throws -> UIImage {
-        print("fetching at: \(url.absoluteString)")
+//        print("fetching at: \(url.absoluteString)")
         let request = URLRequest(url: url)
         let response: (data: Data, raw: URLResponse)
         

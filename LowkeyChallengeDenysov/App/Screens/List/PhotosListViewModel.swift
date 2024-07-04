@@ -34,9 +34,11 @@ final class PhotosListViewModel {
     // 1. urlcache is paginated, you get cached responses based on url which are different only by the page query param
     // can inject the network reachability into the http client and set cache policy based on that
     // or implement own cache with user defaults.
+    
     // 2. use case can return nextPage together with data. If offline, return nil for next page not to show footer
-    // also use case can store last fetched page in user defaults and if offline, fetch N (last page fetched) times
+    // But for this you have to know when it's the last page. also use case can store last fetched page in user defaults and if offline, fetch N (last page fetched) times
     // the items and return them all together.
+    
     // if using user defaults though, this won't be needed. In case of custom cache for responses
     // do not do HX style of giving cache and then network. Always try to get network first and if fails, return all cache
     // If network is success -> invalidate whole cache and store new responses
@@ -71,7 +73,7 @@ final class PhotosListViewModel {
                 photos.append(contentsOf: fetchedPhotos)
                 nextPage += 1
             } catch {
-                print("Error fetching photos: \(error.localizedDescription)")
+                print("xxx Error fetching photos: \(error.localizedDescription)")
             }
             
             state = .idle
