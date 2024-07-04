@@ -31,9 +31,9 @@
 		469A6EF92C3710F600E89762 /* IsOnlineUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469A6EF82C3710F600E89762 /* IsOnlineUseCase.swift */; };
 		469A6EFB2C3711A900E89762 /* UtilsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469A6EFA2C3711A900E89762 /* UtilsFactory.swift */; };
 		469A6EFD2C37145300E89762 /* IsImageCachedUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469A6EFC2C37145300E89762 /* IsImageCachedUseCase.swift */; };
+		469A6F022C37292200E89762 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469A6F002C37292200E89762 /* ImageLoader.swift */; };
+		469A6F032C37292300E89762 /* NetworkReachabilityMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469A6F012C37292200E89762 /* NetworkReachabilityMonitor.swift */; };
 		C31C1C912C355E2F00B014E6 /* CustomAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31C1C902C355E2F00B014E6 /* CustomAsyncImage.swift */; };
-		C366C5F92C35C2F200727DB3 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C366C5F82C35C2F200727DB3 /* ImageLoader.swift */; };
-		C366C6032C35E4D200727DB3 /* NetworkReachabilityMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C366C6022C35E4D200727DB3 /* NetworkReachabilityMonitor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,9 +62,9 @@
 		469A6EF82C3710F600E89762 /* IsOnlineUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsOnlineUseCase.swift; sourceTree = "<group>"; };
 		469A6EFA2C3711A900E89762 /* UtilsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilsFactory.swift; sourceTree = "<group>"; };
 		469A6EFC2C37145300E89762 /* IsImageCachedUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsImageCachedUseCase.swift; sourceTree = "<group>"; };
+		469A6F002C37292200E89762 /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		469A6F012C37292200E89762 /* NetworkReachabilityMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityMonitor.swift; sourceTree = "<group>"; };
 		C31C1C902C355E2F00B014E6 /* CustomAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAsyncImage.swift; sourceTree = "<group>"; };
-		C366C5F82C35C2F200727DB3 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
-		C366C6022C35E4D200727DB3 /* NetworkReachabilityMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityMonitor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -290,8 +290,8 @@
 		C366C5F72C35C2E700727DB3 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				C366C5F82C35C2F200727DB3 /* ImageLoader.swift */,
-				C366C6022C35E4D200727DB3 /* NetworkReachabilityMonitor.swift */,
+				469A6F002C37292200E89762 /* ImageLoader.swift */,
+				469A6F012C37292200E89762 /* NetworkReachabilityMonitor.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -367,7 +367,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				469A6EF92C3710F600E89762 /* IsOnlineUseCase.swift in Sources */,
-				C366C6032C35E4D200727DB3 /* NetworkReachabilityMonitor.swift in Sources */,
 				4689C9DE2C31B0F300A6CC25 /* UseCaseFactory.swift in Sources */,
 				469A6EFD2C37145300E89762 /* IsImageCachedUseCase.swift in Sources */,
 				C31C1C912C355E2F00B014E6 /* CustomAsyncImage.swift in Sources */,
@@ -381,11 +380,12 @@
 				4689C9D82C31B03400A6CC25 /* HTTPClientFactory.swift in Sources */,
 				4689C9DC2C31B0C500A6CC25 /* RepositoryFactory.swift in Sources */,
 				4689C9A92C319CA300A6CC25 /* LowkeyChallengeDenysovApp.swift in Sources */,
+				469A6F022C37292200E89762 /* ImageLoader.swift in Sources */,
 				4689C9C82C31A48D00A6CC25 /* PexelsCuratedPhotosResponse.swift in Sources */,
 				4689C9D42C31A7B800A6CC25 /* GetPhotosUseCase.swift in Sources */,
-				C366C5F92C35C2F200727DB3 /* ImageLoader.swift in Sources */,
 				4689C9DA2C31B09D00A6CC25 /* APIFactory.swift in Sources */,
 				4689C9D02C31A63100A6CC25 /* Photo.swift in Sources */,
+				469A6F032C37292300E89762 /* NetworkReachabilityMonitor.swift in Sources */,
 				4689C9B92C319FF800A6CC25 /* HTTPClient.swift in Sources */,
 				4689C9C62C31A26D00A6CC25 /* PexelsPhotoResponse.swift in Sources */,
 				4689C9C32C31A24200A6CC25 /* PexelsErrorResponse.swift in Sources */,
