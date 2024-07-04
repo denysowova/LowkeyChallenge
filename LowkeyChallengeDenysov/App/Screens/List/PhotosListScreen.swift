@@ -74,21 +74,22 @@ struct PhotosListScreen: View {
         }
     }
     
-    @ViewBuilder
     private func footerView() -> some View {
-        Group {
-            switch viewModel.state {
-            case .idle:
-                ProgressView()
-                    .progressViewStyle(.circular)
-                    .onAppear {
-                        viewModel.fetchPhotos()
-                    }
-            case .loadingNextPage:
-                ProgressView()
-                    .progressViewStyle(.circular)
-            }
+        HStack {
+            Spacer()
+            
+            ProgressView().progressViewStyle(.circular)
+            
+            Spacer()
         }
         .listRowSeparator(.hidden)
+        .onAppear {
+            switch viewModel.state {
+            case .idle:
+                viewModel.fetchPhotos()
+            case .loadingNextPage:
+                break
+            }
+        }
     }
 }
