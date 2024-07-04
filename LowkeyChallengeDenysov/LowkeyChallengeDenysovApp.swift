@@ -10,6 +10,10 @@ import SwiftUI
 @main
 struct LowkeyChallengeDenysovApp: App {
     
+    init() {
+        _ = NetworkReachabilityMonitorImpl.shared
+    }
+    
     var body: some Scene {
         WindowGroup {
             PhotosListScreen()

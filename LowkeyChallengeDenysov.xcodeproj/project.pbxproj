@@ -30,6 +30,7 @@
 		4689C9E92C31B3FA00A6CC25 /* ViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4689C9E82C31B3FA00A6CC25 /* ViewModelFactory.swift */; };
 		C31C1C912C355E2F00B014E6 /* CustomAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31C1C902C355E2F00B014E6 /* CustomAsyncImage.swift */; };
 		C366C5F92C35C2F200727DB3 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C366C5F82C35C2F200727DB3 /* ImageLoader.swift */; };
+		C366C6032C35E4D200727DB3 /* NetworkReachabilityMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C366C6022C35E4D200727DB3 /* NetworkReachabilityMonitor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 		4689C9E82C31B3FA00A6CC25 /* ViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelFactory.swift; sourceTree = "<group>"; };
 		C31C1C902C355E2F00B014E6 /* CustomAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAsyncImage.swift; sourceTree = "<group>"; };
 		C366C5F82C35C2F200727DB3 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		C366C6022C35E4D200727DB3 /* NetworkReachabilityMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityMonitor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -256,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				C366C5F82C35C2F200727DB3 /* ImageLoader.swift */,
+				C366C6022C35E4D200727DB3 /* NetworkReachabilityMonitor.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C366C6032C35E4D200727DB3 /* NetworkReachabilityMonitor.swift in Sources */,
 				4689C9DE2C31B0F300A6CC25 /* UseCaseFactory.swift in Sources */,
 				C31C1C912C355E2F00B014E6 /* CustomAsyncImage.swift in Sources */,
 				4689C9BB2C31A03D00A6CC25 /* HTTPClientErrorResponse.swift in Sources */,
