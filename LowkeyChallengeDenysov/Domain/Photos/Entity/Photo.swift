@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Photo: Hashable {
+struct Photo {
     let id: Int
     let thumbnailURL: URL
     let url: URL

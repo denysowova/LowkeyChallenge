@@ -9,5 +9,5 @@ import Foundation
 
 enum Route: Hashable {
     case list
-    case details(Photo)
+    case details(id: Int, thumbnailURL: URL)
 }

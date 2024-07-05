@@ -10,17 +10,24 @@ import SwiftUI
 struct PhotoDetailsScreen: View {
     
     private let imageLoader = UtilsFactory.imageLoader
-    let photo: Photo
+    private let thumbnailURL: URL
+    
+    @State private var viewModel: PhotoDetailsViewModel
+    
+    init(id: Int, thumbnailURL: URL) {
+        self.thumbnailURL = thumbnailURL
+        _viewModel = State(wrappedValue: ViewModelFactory.detailsViewModel(forPhotoId: id))
+    }
     
     var body: some View {
         ZStack {
             Color.black.ignoresSafeArea(.all)
             
-            CustomAsyncImage(url: photo.url) { phase in
+            CustomAsyncImage(url: viewModel.url) { phase in
                 switch phase {
                 case .fetching, .error:
                     ZStack {
-                        if let image = imageLoader.cachedImage(at: photo.thumbnailURL) {
+                        if let image = imageLoader.cachedImage(at: thumbnailURL) {
                             Image(uiImage: image)
                                 .resizable()
                                 .scaledToFit()
@@ -33,6 +40,9 @@ struct PhotoDetailsScreen: View {
                         .scaledToFit()
                 }
             }
+        }
+        .task {
+            await viewModel.fetchPhoto()
         }
     }
 }

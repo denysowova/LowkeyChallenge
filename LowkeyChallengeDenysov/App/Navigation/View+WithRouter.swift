@@ -15,8 +15,8 @@ private struct WithRouter: ViewModifier {
                 switch route {
                 case .list:
                     PhotosListScreen()
-                case .details(let photo):
-                    PhotoDetailsScreen(photo: photo)
+                case .details(let id, let thumbnailURL):
+                    PhotoDetailsScreen(id: id, thumbnailURL: thumbnailURL)
                 }
             }
     }

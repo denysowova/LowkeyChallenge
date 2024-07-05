@@ -63,7 +63,7 @@ struct PhotosListScreen: View {
             .listRowSeparator(.hidden)
             .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
             .onTapGesture {
-                router.push(.details(item.photo))
+                router.push(.details(id: item.id, thumbnailURL: item.thumbnailURL))
             }
         }
     }

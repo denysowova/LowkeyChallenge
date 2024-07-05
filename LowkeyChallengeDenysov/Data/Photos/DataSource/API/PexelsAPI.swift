@@ -8,6 +8,7 @@
 import Foundation
 
 protocol PhotosDataSource {
+    func photo(by id: Int) async throws -> PexelsPhotoResponse
     func curatedPhotos(page: Int, perPage: Int) async throws -> PexelsCuratedPhotosResponse
 }
 
@@ -17,6 +18,13 @@ final class PexelsAPI: PhotosDataSource {
     
     init(client: HTTPClient<PexelsErrorResponse>) {
         self.client = client
+    }
+    
+    func photo(by id: Int) async throws -> PexelsPhotoResponse {
+        try await client.performRequest(
+            "v1/photos/\(id)",
+            method: .get
+        )
     }
     
     func curatedPhotos(page: Int, perPage: Int) async throws -> PexelsCuratedPhotosResponse {

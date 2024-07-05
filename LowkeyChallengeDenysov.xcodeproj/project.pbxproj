@@ -37,6 +37,8 @@
 		469A6F252C3839AA00E89762 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469A6F242C3839AA00E89762 /* Router.swift */; };
 		469A6F272C3839D700E89762 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469A6F262C3839D700E89762 /* Route.swift */; };
 		469A6F292C383BE600E89762 /* View+WithRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469A6F282C383BE600E89762 /* View+WithRouter.swift */; };
+		469A6F2B2C383FD700E89762 /* GetPhotoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469A6F2A2C383FD700E89762 /* GetPhotoUseCase.swift */; };
+		469A6F2D2C38401200E89762 /* PhotoDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469A6F2C2C38401200E89762 /* PhotoDetailsViewModel.swift */; };
 		C31C1C912C355E2F00B014E6 /* CustomAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31C1C902C355E2F00B014E6 /* CustomAsyncImage.swift */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +74,8 @@
 		469A6F242C3839AA00E89762 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		469A6F262C3839D700E89762 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		469A6F282C383BE600E89762 /* View+WithRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+WithRouter.swift"; sourceTree = "<group>"; };
+		469A6F2A2C383FD700E89762 /* GetPhotoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPhotoUseCase.swift; sourceTree = "<group>"; };
+		469A6F2C2C38401200E89762 /* PhotoDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailsViewModel.swift; sourceTree = "<group>"; };
 		C31C1C902C355E2F00B014E6 /* CustomAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAsyncImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -217,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				4689C9D32C31A7B800A6CC25 /* GetPhotosUseCase.swift */,
+				469A6F2A2C383FD700E89762 /* GetPhotoUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -293,6 +298,7 @@
 			isa = PBXGroup;
 			children = (
 				469A6F212C38385500E89762 /* PhotoDetailsScreen.swift */,
+				469A6F2C2C38401200E89762 /* PhotoDetailsViewModel.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -423,6 +429,8 @@
 				4689C9C32C31A24200A6CC25 /* PexelsErrorResponse.swift in Sources */,
 				469A6EFB2C3711A900E89762 /* UtilsFactory.swift in Sources */,
 				4689C9E92C31B3FA00A6CC25 /* ViewModelFactory.swift in Sources */,
+				469A6F2B2C383FD700E89762 /* GetPhotoUseCase.swift in Sources */,
+				469A6F2D2C38401200E89762 /* PhotoDetailsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

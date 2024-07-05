@@ -13,6 +13,10 @@ enum UseCaseFactory {
         GetPhotosUseCaseImpl(repository: RepositoryFactory.photos)
     }
     
+    static func getPhoto() -> GetPhotoUseCase {
+        GetPhotoUseCaseImpl(repository: RepositoryFactory.photos)
+    }
+    
     static func isImageCached() -> IsImageCachedUseCase {
         IsImageCachedUseCaseImpl(imageLoader: UtilsFactory.imageLoader)
     }

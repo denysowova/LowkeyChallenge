@@ -24,7 +24,7 @@ struct CustomAsyncImage<Content>: View where Content: View {
     private let imageLoader = UtilsFactory.imageLoader
     @State private var phase: CustomAsyncImagePhase = .fetching
     
-    let url: URL
+    let url: URL?
     @ViewBuilder let content: (CustomAsyncImagePhase) -> Content
     
     var body: some View {
@@ -35,6 +35,10 @@ struct CustomAsyncImage<Content>: View where Content: View {
     }
     
     private func fetchImage() async {
+        guard let url else {
+            return
+        }
+        
         do {
             let image = try await imageLoader.image(at: url)
             phase = .fetched(Image(uiImage: image))

@@ -16,4 +16,11 @@ enum ViewModelFactory {
             isImageCachedUseCase: UseCaseFactory.isImageCached()
         )
     }
+    
+    static func detailsViewModel(forPhotoId id: Int) -> PhotoDetailsViewModel {
+        PhotoDetailsViewModel(
+            getPhotoUseCase: UseCaseFactory.getPhoto(),
+            id: id
+        )
+    }
 }
