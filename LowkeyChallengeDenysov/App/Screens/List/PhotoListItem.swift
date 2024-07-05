@@ -11,5 +11,5 @@ struct PhotoListItem: Identifiable {
     let id: Int
     let thumbnailURL: URL
     let url: URL
-    let author: String
+    let authorText: String
 }
