@@ -48,8 +48,6 @@ final class PhotosListViewModel {
             let isOnline = isOnlineUseCase.invoke()
             
             do {
-                print("xxx fetching page \(nextPage)")
-                // if next page is nil, do not show footer
                 let fetchedPhotos = try await getPhotosUseCase.invoke(page: nextPage, perPage: 20)
                     .filter { photo in
                         let isDuplicate = photos.contains { $0.id == photo.id }
@@ -73,7 +71,7 @@ final class PhotosListViewModel {
                 photos.append(contentsOf: fetchedPhotos)
                 nextPage += 1
             } catch {
-                print("xxx Error fetching photos: \(error.localizedDescription)")
+                print("Error fetching photos: \(error.localizedDescription)")
             }
             
             state = .idle
