@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import UIKit
 
 enum CachedAsyncImagePhase {
     case fetching

@@ -37,7 +37,7 @@
 		469A6F252C3839AA00E89762 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469A6F242C3839AA00E89762 /* Router.swift */; };
 		469A6F272C3839D700E89762 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469A6F262C3839D700E89762 /* Route.swift */; };
 		469A6F292C383BE600E89762 /* View+WithRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469A6F282C383BE600E89762 /* View+WithRouter.swift */; };
-		C31C1C912C355E2F00B014E6 /* CustomAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31C1C902C355E2F00B014E6 /* CustomAsyncImage.swift */; };
+		C31C1C912C355E2F00B014E6 /* CachedAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31C1C902C355E2F00B014E6 /* CachedAsyncImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,7 +72,7 @@
 		469A6F242C3839AA00E89762 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		469A6F262C3839D700E89762 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		469A6F282C383BE600E89762 /* View+WithRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+WithRouter.swift"; sourceTree = "<group>"; };
-		C31C1C902C355E2F00B014E6 /* CustomAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAsyncImage.swift; sourceTree = "<group>"; };
+		C31C1C902C355E2F00B014E6 /* CachedAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedAsyncImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,9 +224,9 @@
 		4689C9D52C31B01400A6CC25 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				469A6F232C3839A400E89762 /* Navigation */,
 				C31C1C8F2C355E0900B014E6 /* Components */,
 				4689C9D62C31B02600A6CC25 /* Factories */,
+				469A6F232C3839A400E89762 /* Navigation */,
 				4689C9DF2C31B13900A6CC25 /* Screens */,
 			);
 			path = App;
@@ -310,7 +310,7 @@
 		C31C1C8F2C355E0900B014E6 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				C31C1C902C355E2F00B014E6 /* CustomAsyncImage.swift */,
+				C31C1C902C355E2F00B014E6 /* CachedAsyncImage.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -400,7 +400,7 @@
 				469A6F222C38385500E89762 /* PhotoDetailsScreen.swift in Sources */,
 				469A6F252C3839AA00E89762 /* Router.swift in Sources */,
 				469A6F272C3839D700E89762 /* Route.swift in Sources */,
-				C31C1C912C355E2F00B014E6 /* CustomAsyncImage.swift in Sources */,
+				C31C1C912C355E2F00B014E6 /* CachedAsyncImage.swift in Sources */,
 				4689C9BB2C31A03D00A6CC25 /* HTTPClientErrorResponse.swift in Sources */,
 				4689C9E42C31B2E400A6CC25 /* PhotosListViewModel.swift in Sources */,
 				4689C9E22C31B21B00A6CC25 /* PhotosListScreen.swift in Sources */,
