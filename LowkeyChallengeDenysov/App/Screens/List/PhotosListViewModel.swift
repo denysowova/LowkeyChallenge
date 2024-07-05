@@ -66,7 +66,8 @@ final class PhotosListViewModel {
                             id: $0.id,
                             thumbnailURL: $0.thumbnailURL,
                             url: $0.url,
-                            author: $0.author
+                            author: $0.author,
+                            photo: $0
                         )
                     }
                 

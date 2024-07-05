@@ -10,13 +10,18 @@ import SwiftUI
 @main
 struct LowkeyChallengeDenysovApp: App {
     
+    @State private var router = Router()
+    
     init() {
         _ = UtilsFactory.networkReachabilityMonitor
     }
     
     var body: some Scene {
         WindowGroup {
-            PhotosListScreen()
+            NavigationStack(path: $router.path) {
+                PhotosListScreen().withRouter()
+            }
+            .environment(router)
         }
     }
 }

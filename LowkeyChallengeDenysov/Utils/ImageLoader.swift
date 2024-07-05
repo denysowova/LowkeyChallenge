@@ -10,6 +10,7 @@ import UIKit
 protocol ImageLoader {
     func image(at url: URL) async throws -> UIImage
     func isImageCached(for url: URL) -> Bool
+    func cachedImage(at url: URL) -> UIImage?
 }
 
 final class ImageLoaderImpl: ImageLoader {
@@ -53,5 +54,16 @@ final class ImageLoaderImpl: ImageLoader {
     func isImageCached(for url: URL) -> Bool {
         let request = URLRequest(url: url)
         return session.configuration.urlCache?.cachedResponse(for: request) != nil
+    }
+    
+    func cachedImage(at url: URL) -> UIImage? {
+        let request = URLRequest(url: url)
+        
+        guard let response = session.configuration.urlCache?.cachedResponse(for: request),
+              let image = UIImage(data: response.data) else {
+            return nil
+        }
+        
+        return image
     }
 }

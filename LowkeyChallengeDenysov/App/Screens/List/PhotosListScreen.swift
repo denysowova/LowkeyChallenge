@@ -16,6 +16,7 @@ struct PhotosListScreen: View {
     
     private let rowHeight = 150.0
     
+    @Environment(Router.self) private var router
     @State private var viewModel = ViewModelFactory.photosList()
     
     var body: some View {
@@ -42,7 +43,7 @@ struct PhotosListScreen: View {
     
     private func listContent() -> some View {
         ForEach(viewModel.photos) { item in
-            CustomAsyncImage(url: item.url) { phase in
+            CustomAsyncImage(url: item.thumbnailURL) { phase in
                 switch phase {
                 case .fetching, .error:
                     Color.gray
@@ -61,6 +62,9 @@ struct PhotosListScreen: View {
             .padding(.vertical, 10)
             .listRowSeparator(.hidden)
             .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+            .onTapGesture {
+                router.push(.details(item.photo))
+            }
         }
     }
     
