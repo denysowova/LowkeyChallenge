@@ -30,7 +30,6 @@ final class PhotosListViewModel {
         self.isImageCachedUseCase = isImageCachedUseCase
     }
     
-    #warning("use thumbnail url here and in the list!!!")
     // 1. urlcache is paginated, you get cached responses based on url which are different only by the page query param
     // can inject the network reachability into the http client and set cache policy based on that
     // or implement own cache with user defaults.
