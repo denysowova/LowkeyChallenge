@@ -43,7 +43,6 @@ final class ImageLoaderImpl: ImageLoader {
             throw Error.request(error)
         }
         
-        /// Optimization opportunity: use UIImage::byPreparingForDisplay offloading image decoding from view
         if let image = UIImage(data: response.data) {
             return image
         } else {

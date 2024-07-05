@@ -43,7 +43,7 @@ struct PhotosListScreen: View {
     
     private func listContent() -> some View {
         ForEach(viewModel.photos) { item in
-            CustomAsyncImage(url: item.thumbnailURL) { phase in
+            CachedAsyncImage(url: item.thumbnailURL) { phase in
                 switch phase {
                 case .fetching, .error:
                     Color.gray
@@ -75,7 +75,7 @@ struct PhotosListScreen: View {
                 VStack {
                     Spacer()
                     
-                    Text("By: \(item.author)")
+                    Text(item.authorText)
                         .foregroundStyle(Color.white)
                         .padding(.bottom, 10)
                 }

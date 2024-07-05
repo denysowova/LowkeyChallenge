@@ -16,7 +16,7 @@ struct PhotoDetailsScreen: View {
         ZStack {
             Color.black.ignoresSafeArea(.all)
             
-            CustomAsyncImage(url: photo.url) { phase in
+            CachedAsyncImage(url: photo.url) { phase in
                 switch phase {
                 case .fetching, .error:
                     ZStack {

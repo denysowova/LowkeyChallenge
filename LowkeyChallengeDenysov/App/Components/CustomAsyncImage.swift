@@ -1,5 +1,5 @@
 //
-//  CustomAsyncImage.swift
+//  CachedAsyncImage.swift
 //  LowkeyChallengeDenysov
 //
 //  Created by Volodymyr Denysov on 3.07.24.
@@ -8,13 +8,13 @@
 import SwiftUI
 import UIKit
 
-enum CustomAsyncImagePhase {
+enum CachedAsyncImagePhase {
     case fetching
     case error(Error)
     case fetched(Image)
 }
 
-struct CustomAsyncImage<Content>: View where Content: View {
+struct CachedAsyncImage<Content>: View where Content: View {
     
     enum Error: Swift.Error {
         case request(Swift.Error)
@@ -22,10 +22,10 @@ struct CustomAsyncImage<Content>: View where Content: View {
     }
     
     private let imageLoader = UtilsFactory.imageLoader
-    @State private var phase: CustomAsyncImagePhase = .fetching
+    @State private var phase: CachedAsyncImagePhase = .fetching
     
     let url: URL
-    @ViewBuilder let content: (CustomAsyncImagePhase) -> Content
+    @ViewBuilder let content: (CachedAsyncImagePhase) -> Content
     
     var body: some View {
         content(phase)
